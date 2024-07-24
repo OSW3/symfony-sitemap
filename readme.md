@@ -1,6 +1,6 @@
 # Symfony Sitemap
 
-Add sitemap to your app..
+Add sitemap to your app.
 
 ## How to install
 
