@@ -54,8 +54,24 @@ class SitemapExtension extends Extension implements PrependExtensionInterface
         // --
 
         $twigConfig = [];
-        $twigConfig['paths'][Path::join(__DIR__, "/../../", "templates")] = "Sitemap";
+		$this->extendsTwigConfig($twigConfig, Path::join(__DIR__, "/../../", "templates"), "Sitemap");
 
         $container->prependExtensionConfig('twig', $twigConfig);
     }
+
+	/**
+	 * Add a path to extends twig sources
+	 *
+	 * @param array $twigConfig
+	 * @param string $directory
+	 * @param string $alias
+	 * @return void
+	 */
+	private function extendsTwigConfig(array &$twigConfig, string $directory, string $alias) 
+	{
+		if (is_dir($directory))
+		{
+			$twigConfig['paths'][$directory] = $alias;
+		}
+	}
 }
